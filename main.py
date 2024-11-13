@@ -1,14 +1,24 @@
-class Rectangle:
-    def __init__(self, width, height):
-        self.width = width
-        self.height = height
+class BankAccount:
+    def __init__(self):
+        self.__balance = 0  
 
-    def area(self):
-        return self.width * self.height
-    
-    def perimeter(self):
-        return 2 * (self.width + self.height)
+    def deposit(self, amount):
+        self.__balance += amount 
 
-rect = Rectangle(3, 4)
-print(f"Area: {rect.area()}")         
-print(f"Perimeter: {rect.perimeter()}")
+    def withdraw(self, amount):
+        if self.__balance >= amount:
+            self.__balance -= amount 
+        else:
+            print("Money on your balance is not enough!")  
+
+    def get_balance(self):
+        return self.__balance 
+
+
+# Тестування
+account = BankAccount()
+account.deposit(100)
+print(account.get_balance())  
+account.withdraw(50)
+print(account.get_balance())
+account.withdraw(100)
