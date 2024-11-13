@@ -1,7 +1,14 @@
-class Point:
-    def __init__(self, x=0, y=0):
-        self._x = x
-        self._y = y
+class Rectangle:
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
 
-pt = Point(1, 2)
-print(pt._x, pt._y)
+    def area(self):
+        return self.width * self.height
+    
+    def perimeter(self):
+        return 2 * (self.width + self.height)
+
+rect = Rectangle(3, 4)
+print(f"Area: {rect.area()}")         
+print(f"Perimeter: {rect.perimeter()}")
