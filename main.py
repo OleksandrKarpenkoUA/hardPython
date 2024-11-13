@@ -1,24 +1,26 @@
-class BankAccount:
-    def __init__(self):
-        self.__balance = 0  
+class Animal:
+    def __init__(self, name="Animal name"):
+        self.name = name
 
-    def deposit(self, amount):
-        self.__balance += amount 
+    def make_sound(self):
+        print("Some sound")
 
-    def withdraw(self, amount):
-        if self.__balance >= amount:
-            self.__balance -= amount 
-        else:
-            print("Money on your balance is not enough!")  
+class Dog(Animal):
+    def __init__(self, name):
+        super().__init__(name) 
 
-    def get_balance(self):
-        return self.__balance 
+    def make_sound(self):
+        print("Woof!")
 
+class Cat(Animal):
+    def __init__(self, name):
+        super().__init__(name)  
 
-# Тестування
-account = BankAccount()
-account.deposit(100)
-print(account.get_balance())  
-account.withdraw(50)
-print(account.get_balance())
-account.withdraw(100)
+    def make_sound(self):
+        print("Meow!")
+
+dog = Dog("Buddy")
+cat = Cat("Whiskers")
+
+dog.make_sound()
+cat.make_sound()
