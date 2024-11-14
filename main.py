@@ -1,26 +1,22 @@
-class Animal:
-    def __init__(self, name="Animal name"):
-        self.name = name
+class Point:
+    MAX_COORD = 100
+    MIN_COORD = 0
 
-    def make_sound(self):
-        print("Some sound")
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
 
-class Dog(Animal):
-    def __init__(self, name):
-        super().__init__(name) 
+    def set_coord(self, x, y):
+        if self.MIN_COORD <= x <= self.MAX_COORD:
+            self.x = x
+            self.y = y
+    
+    def __getattribute__(self, item):
+        print("__getattribute__")
+        return object.__getattribute__(self, item)
+    
 
-    def make_sound(self):
-        print("Woof!")
+pt1 = Point(1, 2)
+pt2 = Point(10, 20)
 
-class Cat(Animal):
-    def __init__(self, name):
-        super().__init__(name)  
-
-    def make_sound(self):
-        print("Meow!")
-
-dog = Dog("Buddy")
-cat = Cat("Whiskers")
-
-dog.make_sound()
-cat.make_sound()
+a = pt1.x
