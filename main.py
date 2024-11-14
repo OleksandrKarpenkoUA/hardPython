@@ -26,7 +26,12 @@ class Point:
     def __getattr__(self, item):
         return False
     
+    def __delattr__(self, item):
+        print("__delattr__: " + item)
+        object.__delattr__(self, item)
+    
 
 pt1 = Point(1, 2)
 pt2 = Point(10, 20)
 print(pt1.yy)
+del pt1.x
