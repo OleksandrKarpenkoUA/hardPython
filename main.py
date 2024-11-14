@@ -12,11 +12,21 @@ class Point:
             self.y = y
     
     def __getattribute__(self, item):
-        print("__getattribute__")
-        return object.__getattribute__(self, item)
+        if item == "x":
+            raise ValueError("Access is denied")
+        else:
+            return object.__getattribute__(self, item)
+        
+    def __setattr__(self, key, value):
+        if key == "z":
+            raise AttributeError("Invalid attribute name")
+        else:
+            object.__setattr__(self, key, value)
+    
+    def __getattr__(self, item):
+        return False
     
 
 pt1 = Point(1, 2)
 pt2 = Point(10, 20)
-
-a = pt1.x
+print(pt1.yy)
